@@ -3,4 +3,8 @@
 #
 FROM node:7
 
-RUN npm install -g loopback-cli
+# optimize later
+RUN npm install -g loopback-cli && \
+    npm cache clear
+
+WORKDIR /usr/src
