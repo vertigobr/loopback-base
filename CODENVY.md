@@ -29,4 +29,40 @@ sudo npm install -g npm
 
 ## Running this project
 
-To run this projecy on Codenvy just 
+We always need `nodemon`, so install it if not present:
+
+```sh
+sudo npm install -g nodemon
+```
+
+To run this project on Codenvy first try to run it on the workspace Terminal:
+
+```sh
+user@07f006ae7e88:/projects$ cd loopback-base/src/
+user@07f006ae7e88:/projects/loopback-base/src$ node .
+(...)
+Web server listening at: http://0.0.0.0:3000
+Browse your REST API at http://0.0.0.0:3000/explorer
+```
+
+## Connect with browser
+
+Check the "real" URL for the container's desired port (3000). Chech the workspace runtime settings at "dev-machine", look for the "node-3000" element. Use this URL in your remote browser.
+
+## Connect with browser the smart way
+
+You can create a new "run configuration" with the following attributes:
+
+* Command line: "cd /projects/loopback-base/src && nodemon ."
+* Preview URL: "${server.3000}explorer"
+
+When starting the application from the very "run" button form the IDE you will be notified about the proper URL on the console (look for "preview"):
+
+```
+command: cd /projects/loopback-base/src && nodemon .
+preview: http://node30.codenvy.io:33040/explorer
+[33m[nodemon] 1.11.0[39m
+(...)
+Web server listening at: http://0.0.0.0:3000
+Browse your REST API at http://0.0.0.0:3000/explorer
+```
