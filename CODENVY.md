@@ -27,3 +27,6 @@ sudo n stable
 sudo npm install -g npm
 ```
 
+## Running this project
+
+To run this projecy on Codenvy just 
