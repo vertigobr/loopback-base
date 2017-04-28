@@ -3,15 +3,17 @@
 #
 FROM node:7
 
-# optimize later
+# loopback cli tool
 RUN npm install -g loopback-cli && \
+    npm install -g nodemon && \
     npm cache clear
 
 WORKDIR /usr/src
 
 # Install app dependencies
 COPY src/package.json /usr/src/
-RUN npm install
+RUN npm install && \
+    npm cache clear
 
 # Bundle app source
 COPY src /usr/src
