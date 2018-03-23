@@ -1,22 +1,14 @@
 #
 # Base Loopback (over Node)
 #
-FROM node:7
+FROM node:9
 
 # loopback cli tool
-RUN npm install -g loopback-cli && \
+RUN npm -g config set user root && \
+    npm install -g loopback-cli && \
     npm install -g nodemon && \
-    npm cache clear
+    npm -g config set user nobody && \
+    npm cache clear --force
 
 WORKDIR /usr/app
 
-# Install app dependencies
-COPY package.json /usr/app/
-RUN npm install --quiet && \
-    npm cache clear
-
-# Bundle app source
-COPY . /usr/app/
-
-EXPOSE 3000
-CMD [ "npm", "start" ]
