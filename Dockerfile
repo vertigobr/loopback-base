@@ -8,15 +8,15 @@ RUN npm install -g loopback-cli && \
     npm install -g nodemon && \
     npm cache clear
 
-WORKDIR /usr/src
+WORKDIR /usr/app
 
 # Install app dependencies
-COPY src/package.json /usr/src/
-RUN npm install && \
+COPY package.json /usr/app/
+RUN npm install --quiet && \
     npm cache clear
 
 # Bundle app source
-COPY src /usr/src
+COPY . /usr/app/
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
