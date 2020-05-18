@@ -1,16 +1,13 @@
 #
 # Base Loopback (over Node)
 #
-FROM node:9
+FROM node:lts-slim
 
 ARG NPM_REG
 
 # loopback cli tool
-RUN npm -g config set user root && \
-    npm install -g loopback-cli $NPM_REG && \
-    npm install -g nodemon $NPM_REG && \
-    npm -g config set user nobody && \
-    npm cache clear --force
+RUN npm install -g loopback-cli $NPM_REG
+RUN npm install -g nodemon $NPM_REG
+RUN npm install -g apiconnect $NPM_REG
 
-WORKDIR /usr/app
-
+WORKDIR /app
