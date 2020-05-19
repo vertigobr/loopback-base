@@ -1,4 +1,4 @@
 #!/bin/bash
 docker build \
-    --build-arg NPM_REG="--registry http://mta-mirror.vtg/artifactory/api/npm/npm-remote/" \
+    --build-arg NPM_REG="$NPM_REG" \
     -t vertigo/loopback-base .
